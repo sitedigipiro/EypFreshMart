@@ -343,7 +343,8 @@ border-radius:12px;
 .grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:30px;
+    gap:45px 35px;
+    margin-top:35px;
 }
 
 .container{
@@ -445,24 +446,85 @@ transform:translateY(-8px);
 transform:scale(1.1);
 }
 
+
+/*video*/
+
 .video-section{
-background:white;
-text-align:center;
+    background:#fff;
+    text-align:center;
 }
 
-.video-container{
-max-width:900px;
-margin:auto;
-margin-top:35px;
+.video-slider{
+    position:relative;
+    max-width:900px;
+    margin:40px auto;
 }
 
-.video-container video,
-.video-container iframe{
-width:100%;
-height:520px;
-border-radius:18px;
-border:none;
-box-shadow:0 10px 25px rgba(0,0,0,.15);
+.video-wrapper{
+    position:relative;
+}
+
+.video-slide{
+    display:none;
+}
+
+.video-slide.active{
+    display:block;
+}
+
+.video-slide video{
+    width:100%;
+    height:520px;
+    border-radius:18px;
+    object-fit:cover;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+.prev,
+.next{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:48px;
+    height:48px;
+    border:none;
+    border-radius:50%;
+    background:#FFD54F;
+    color:#2E7D32;
+    font-size:22px;
+    cursor:pointer;
+    z-index:10;
+    transition:.3s;
+}
+
+.prev:hover,
+.next:hover{
+    background:#F4B400;
+    transform:translateY(-50%) scale(1.08);
+}
+
+.prev{
+    left:-70px;
+}
+
+.next{
+    right:-70px;
+}
+
+@media(max-width:768px){
+
+.video-slide video{
+    height:260px;
+}
+
+.prev{
+    left:10px;
+}
+
+.next{
+    right:10px;
+}
+
 }
 
 
@@ -1086,6 +1148,542 @@ height:200px;
 
 }
 
+/* =======================
+   LOKASI
+======================= */
+
+.lokasi{
+    position:relative;
+    overflow:hidden;
+    background:linear-gradient(135deg,#F7FFF2,#FFFDE7,#FFF8D6);
+    text-align:left;
+    padding:80px 8%;
+}
+
+.lokasi h2{
+    font-size:42px;
+    color:#2E7D32;
+    text-align:center;
+    margin-bottom:15px;
+    font-weight:700;
+    position:relative;
+    z-index:2;
+}
+
+.lokasi h2::after{
+    content:"";
+    display:block;
+    width:90px;
+    height:5px;
+    background:#F4B400;
+    margin:15px auto 0;
+    border-radius:10px;
+}
+
+.lokasi .subtitle{
+    max-width:700px;
+    margin:0 auto 50px;
+    text-align:center;
+    color:#666;
+    font-size:18px;
+    line-height:1.8;
+    position:relative;
+    z-index:2;
+}
+
+
+/* Bubble Background */
+
+.lokasi::before,
+.lokasi::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    background:rgba(255,255,255,.45);
+    animation:floatBubble 7s ease-in-out infinite;
+}
+
+.lokasi::before{
+    width:220px;
+    height:220px;
+    left:-80px;
+    top:40px;
+}
+
+.lokasi::after{
+    width:180px;
+    height:180px;
+    right:-60px;
+    bottom:20px;
+    animation-delay:2s;
+}
+
+@keyframes floatBubble{
+
+0%,100%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-25px);
+}
+
+}
+
+.lokasi-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(420px,1fr));
+    gap:35px;
+    margin-top:45px;
+}
+
+.lokasi-card{
+    position:relative;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(10px);
+    border-radius:22px;
+    padding:35px;
+    overflow:hidden;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+    transition:.45s;
+}
+
+.lokasi-card:hover{
+
+transform:translateY(-12px) scale(1.02);
+
+box-shadow:0 25px 45px rgba(46,125,50,.18);
+
+}
+
+/* garis kuning atas */
+
+.lokasi-card::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+left:0;
+
+width:100%;
+height:6px;
+
+background:linear-gradient(to right,#F4B400,#FFD54F);
+
+}
+
+.lokasi-card h3{
+
+color:#2E7D32;
+font-size:26px;
+margin-bottom:25px;
+
+}
+
+.lokasi-card p{
+
+display:flex;
+align-items:center;
+gap:12px;
+
+margin:18px 0;
+
+font-size:16px;
+
+color:#555;
+
+}
+
+.lokasi-card i{
+
+width:42px;
+height:42px;
+
+background:#FFD54F;
+
+border-radius:50%;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+color:#2E7D32;
+
+font-size:18px;
+
+flex-shrink:0;
+
+transition:.4s;
+
+}
+
+.lokasi-card:hover i{
+
+transform:rotate(12deg) scale(1.1);
+
+}
+
+.lokasi-card iframe{
+
+width:100%;
+height:220px;
+
+border:none;
+border-radius:18px;
+
+margin-top:20px;
+
+transition:.4s;
+
+}
+
+.lokasi-card:hover iframe{
+
+transform:scale(1.03);
+
+}
+
+.lokasi-card .btn{
+
+margin-top:25px;
+
+display:inline-block;
+
+}
+
+@media(max-width:768px){
+
+.lokasi-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+/*sertifikat*/
+
+/* =======================
+   SERTIFIKAT
+======================= */
+
+.sertifikat{
+    background:linear-gradient(135deg,#FFFEF6,#FFF8D8,#FFFDF5);
+    text-align:center;
+    overflow:hidden;
+    position:relative;
+}
+
+/* Bubble */
+
+.sertifikat::before,
+.sertifikat::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    background:rgba(255,255,255,.45);
+    animation:sertifikatFloat 8s ease-in-out infinite;
+}
+
+.sertifikat::before{
+    width:220px;
+    height:220px;
+    left:-80px;
+    top:40px;
+}
+
+.sertifikat::after{
+    width:170px;
+    height:170px;
+    right:-60px;
+    bottom:30px;
+    animation-delay:2s;
+}
+
+@keyframes sertifikatFloat{
+
+0%,100%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-20px);
+}
+
+}
+
+.sertifikat-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+    gap:35px;
+    margin-top:50px;
+}
+
+.sertifikat-card{
+    background:white;
+    border-radius:22px;
+    padding:30px;
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+    transition:.4s;
+    position:relative;
+    overflow:hidden;
+}
+
+.sertifikat-card:hover{
+    transform:translateY(-12px);
+    box-shadow:0 20px 40px rgba(46,125,50,.18);
+}
+
+/* garis atas */
+
+.sertifikat-card::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:6px;
+    background:linear-gradient(to right,#2E7D32,#FFD54F);
+}
+
+.sertifikat-img{
+    overflow:hidden;
+    border-radius:16px;
+}
+
+.sertifikat-img img{
+    width:100%;
+    height:380px;
+    object-fit:contain;
+    transition:.6s;
+}
+
+.sertifikat-card:hover img{
+    transform:scale(1.08);
+}
+
+.sertifikat-card h3{
+    margin:22px 0 12px;
+    color:#2E7D32;
+    font-size:24px;
+}
+
+.sertifikat-card h3 i{
+    color:#F4B400;
+    margin-right:8px;
+}
+
+.sertifikat-card p{
+    color:#666;
+    line-height:1.7;
+}
+
+@media(max-width:768px){
+
+.sertifikat-grid{
+    grid-template-columns:1fr;
+}
+
+.sertifikat-img img{
+    height:280px;
+}
+
+}
+/*tombolbeli*/
+
+
+.btn-beli{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+
+    width:100%;
+    box-sizing:border-box; /* penting */
+
+    margin-top:18px;
+    padding:13px 15px;
+
+    background:linear-gradient(135deg,#25D366,#128C7E);
+    color:#fff;
+    text-decoration:none;
+    border-radius:12px;
+
+    font-weight:600;
+    transition:.35s;
+
+    box-shadow:0 8px 18px rgba(37,211,102,.35);
+}
+
+.btn-beli:hover{
+    transform:translateY(-4px);
+    box-shadow:0 12px 25px rgba(37,211,102,.45);
+}
+
+/* ==========================
+   RESELLER
+========================== */
+
+.reseller{
+
+background:linear-gradient(135deg,#E8F5E9,#FFFDE7,#FFF8D6);
+position:relative;
+overflow:hidden;
+
+}
+
+.reseller::before{
+
+content:"";
+position:absolute;
+width:280px;
+height:280px;
+background:rgba(255,255,255,.35);
+border-radius:50%;
+left:-100px;
+top:-80px;
+animation:floatBubble 8s infinite;
+
+}
+
+.reseller::after{
+
+content:"";
+position:absolute;
+width:220px;
+height:220px;
+background:rgba(255,255,255,.3);
+border-radius:50%;
+right:-70px;
+bottom:-60px;
+animation:floatBubble 10s infinite;
+
+}
+
+.reseller-box{
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:60px;
+margin-top:50px;
+
+}
+
+.reseller-left{
+
+flex:1;
+
+}
+
+.reseller-left h3{
+
+font-size:32px;
+color:#2E7D32;
+margin-bottom:30px;
+
+}
+
+.benefit{
+
+display:flex;
+align-items:center;
+gap:18px;
+
+background:white;
+padding:18px 22px;
+
+margin-bottom:18px;
+
+border-radius:15px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+transition:.35s;
+
+}
+
+.benefit:hover{
+
+transform:translateX(10px);
+
+}
+
+.benefit i{
+
+width:50px;
+height:50px;
+
+background:#FFD54F;
+
+border-radius:50%;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+color:#2E7D32;
+font-size:22px;
+
+}
+
+.benefit span{
+
+font-size:17px;
+font-weight:600;
+
+}
+
+.reseller-left .btn{
+
+margin-top:20px;
+
+}
+
+.reseller-right{
+
+flex:1;
+text-align:center;
+
+}
+
+.reseller-right img{
+
+width:90%;
+max-width:450px;
+
+animation:floating 4s ease-in-out infinite;
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.reseller-box{
+
+flex-direction:column-reverse;
+text-align:center;
+
+}
+
+.benefit{
+
+text-align:left;
+
+}
+
+.reseller-right img{
+
+width:260px;
+
+}
+
+}
 
 </style>
 
@@ -1173,6 +1771,55 @@ class="hero-img">
 
 </section>
 
+
+<section class="section sertifikat" id="sertifikat">
+
+    <div class="container">
+
+        <h2> Legalitas Usaha </h2>
+
+        <p class="subtitle">
+            Produk EYP Fresh Mart telah memiliki legalitas dan sertifikasi sebagai bentuk komitmen kami terhadap kualitas, keamanan, dan kepercayaan pelanggan.
+        </p>
+
+        <div class="sertifikat-grid">
+
+            <div class="sertifikat-card">
+                <div class="sertifikat-img">
+                    <img src="images/pirt.png" alt="Sertifikat PIRT">
+                </div>
+
+                <h3>
+                    <i class="fas fa-file-certificate"></i>
+                    Sertifikat PIRT
+                </h3>
+
+                <p>
+                    Produk telah memiliki izin Produksi Pangan Industri Rumah Tangga (PIRT) sehingga aman untuk dipasarkan.
+                </p>
+            </div>
+
+            <div class="sertifikat-card">
+                <div class="sertifikat-img">
+                    <img src="images/halal.png" alt="Sertifikat Halal">
+                </div>
+
+                <h3>
+                    <i class="fas fa-mosque"></i>
+                    Sertifikat Halal
+                </h3>
+
+                <p>
+                    Produk telah memperoleh sertifikasi Halal sehingga memberikan rasa aman dan nyaman bagi seluruh konsumen.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
 <section class="section" id="produk">
     <div class="container">
 
@@ -1182,60 +1829,109 @@ class="hero-img">
 
     <div class="grid">
 
-        <div class="card">
-            <img src="images/lemonkecil.png">
-            <h3>Lemon Kecil California </h3>
-            <p>Segar dipanen langsung dari kebun. Ukuran Kecil isi 10 - 12 / kg</p>
-            <h4>Rp.18.000 / Kg</h4>
-        </div>
+       <div class="card">
+    <img src="images/lemonkecil.png">
+    <h3>Lemon Kecil California</h3>
+    <p>Segar dipanen langsung dari kebun. Ukuran Kecil isi 10 - 12 / kg</p>
+
+    <h4>Rp.20.000 / Kg</h4>
+
+    <a href="https://wa.me/628978046090?text=Halo%20EYP%20Fresh%20Mart,%20saya%20ingin%20memesan%20Lemon%20Kecil%20California."
+       class="btn-beli"
+       target="_blank">
+        <i class="fab fa-whatsapp"></i> Beli Sekarang
+    </a>
+</div>
 
         <div class="card">
             <img src="images/lemonbesar.png">
             <h3>Lemon Besar California </h3>
             <p>Ukuran besar langsung dari kebun dijamin FRESH. Isi 4 - 6 / kg</p>
-            <h4>Rp.25.000 / Kg</h4>
+            <h4>Rp.30.000 / Kg</h4>
+
+            <a href="https://wa.me/628978046090?text=Halo%20EYP%20Fresh%20Mart,%20saya%20ingin%20memesan%20Lemon%20Besar%20California."
+class="btn-beli"
+target="_blank">
+<i class="fab fa-whatsapp"></i> Beli Sekarang
+</a>
         </div>
 
            <div class="card">
             <img src="images/lemonsedang.png">
             <h3>Lemon Sedang California </h3>
             <p>Ukuran Sedang langsung dari kebun dijamin FRESH. Isi 7 - 9 / kg</p>
-            <h4>Rp.22.000 / Kg</h4>
+            <h4>Rp.27.000 / Kg</h4>
+
+            <a href="https://wa.me/628978046090?text=Halo%20EYP%20Fresh%20Mart,%20saya%20ingin%20memesan%20Lemon%20Sedang%20California."
+class="btn-beli"
+target="_blank">
+<i class="fab fa-whatsapp"></i> Beli Sekarang
+</a>
         </div>
 
          <div class="card">
             <img src="images/lemonsuper.png">
             <h3>Lemon California Kemasan Super </h3>
             <p>Lemon California Grade A standard import kemasan Hijau. Lemon dengan kemasan Hijau ini 100% pilihan sortir dijamin mulus dan banyak airnya. Ukuran Sedang isi 7 - 10 / kg .</p>
-            <h4>Rp30.000 / Kg</h4>
+            <h4>Rp37.000 / Kg</h4>
+
+            <a href="https://wa.me/628978046090?text=Halo%20EYP%20Fresh%20Mart,%20saya%20ingin%20memesan%20Lemon%20Super%20California."
+class="btn-beli"
+target="_blank">
+<i class="fab fa-whatsapp"></i> Beli Sekarang
+</a>
         </div>
 
           <div class="card">
             <img src="images/lemonpremium.png">
             <h3>Lemon California Kemasan Premium </h3>
             <p>Lemon California Grade A standard import kemasan Merah . Lemon dengan kemasan Hijau ini 100% pilihan sortir dijamin mulus dan banyak airnya. Ukuran Besar Isi 6 - 8 / kg .</p>
-            <h4>Rp.35.000 / Kg</h4>
+            <h4>Rp.40.000 / Kg</h4>
+
+            <a href="https://wa.me/628978046090?text=Halo%20EYP%20Fresh%20Mart,%20saya%20ingin%20memesan%20Lemon%20Premium%20California."
+class="btn-beli"
+target="_blank">
+<i class="fab fa-whatsapp"></i> Beli Sekarang
+</a>
         </div>
 
          <div class="card">
             <img src="images/lemonhijau.png">
             <h3>Lemon California Hijau </h3>
             <p>Lemon California Hijau air lebih sedikit dan tidak ada sortir. Isi / kg tergantung kesesuaian stok. </p>
-            <h4>Rp.18.000 / Kg</h4>
+            <h4>Rp.22.000 / Kg</h4>
+
+            <a href="https://wa.me/628978046090?text=Halo%20EYP%20Fresh%20Mart,%20saya%20ingin%20memesan%20Lemon%20Hijau%20California."
+class="btn-beli"
+target="_blank">
+<i class="fab fa-whatsapp"></i> Beli Sekarang
+</a>
         </div>
 
         <div class="card">
-            <img src="images/babyjava.JPG">
+            <img src="images/babyjava.jpg">
             <h3>Baby Java </h3>
             <p>Jeruk Baby Java Nikmati kelezatan jeruk segar dengan ukuran besar dan irisan tebal yang memanjakan lidah Anda. Jeruk Baby Java ini terkenal akan kelezatannya yang manis dan segar, cocok untuk dinikmati langsung atau diolah menjadi minuman segar. </p>
-            <h4>Rp.18.000 / Kg</h4>
+            <h4>Rp.22.000 / Kg</h4>
+
+            <a href="https://wa.me/628978046090?text=Halo%20EYP%20Fresh%20Mart,%20saya%20ingin%20memesan%20Jeruk%20Baby%20Java."
+class="btn-beli"
+target="_blank">
+<i class="fab fa-whatsapp"></i> Beli Sekarang
+</a>
         </div>
 
         <div class="card">
-            <img src="images/siyem.JPG">
+            <img src="images/siyem.jpg">
             <h3> Jeruk Siyem </h3>
             <p>Jeruk Peras Nikmati kelezatan jeruk segar dengan ukuran besar dan air yang melimpah yang memanjakan lidah Anda. Jeruk Siyem ini terkenal akan kelezatannya yang manis dan segar, cocok untuk dinikmati langsung atau diolah menjadi minuman segar. </p>
-            <h4>Rp.18.000 / Kg</h4>
+            <h4>Rp.22.000 / Kg</h4>
+
+            <a href="https://wa.me/628978046090?text=Halo%20EYP%20Fresh%20Mart,%20saya%20ingin%20memesan%20Jeruk%20Peras%20Siyem."
+class="btn-beli"
+target="_blank">
+<i class="fab fa-whatsapp"></i> Beli Sekarang
+</a>
         </div>
 
 
@@ -1252,6 +1948,12 @@ class="hero-img">
             <h3>Dried Lemon </h3>
             <p>Lemon yang dipotong kemudian dikeringkan dioven. Cara Penyajiannya cukup celupkan 1- 2 slice kedalam air 200 ml(campurkan gula atau madu sesuai selera) kemudian aduk hingga tercampur.</p>
             <h4>Rp.120.000 / kg </h4>
+
+            <a href="https://wa.me/628978046090?text=Halo%20EYP%20Fresh%20Mart,%20saya%20ingin%20memesan%20Dried%20Lemon%20California."
+class="btn-beli"
+target="_blank">
+<i class="fab fa-whatsapp"></i> Beli Sekarang
+</a>
         </div>
 
         <div class="card">
@@ -1259,6 +1961,12 @@ class="hero-img">
             <h3> Sari Lemon California </h3>
             <p>Lemon yang diperas kemudian disaring agar air yang diperas jernih. Cara Penyajian campurkan 1 - 2 sendok sari lemon kedalam 200 ml air.</p>
             <h4>Rp.12.500 / 200ml </h4>
+
+            <a href="https://wa.me/628978046090?text=Halo%20EYP%20Fresh%20Mart,%20saya%20ingin%20memesan%20Sari%20Lemon%20California."
+class="btn-beli"
+target="_blank">
+<i class="fab fa-whatsapp"></i> Beli Sekarang
+</a>
         </div>
 
             <div class="card">
@@ -1266,6 +1974,12 @@ class="hero-img">
             <h3> Sirup Lemon California </h3>
             <p>Lemon yang diperas kemudian disaring agar air yang diperas jernih dan dicampurkan gula + madu. Cara Penyajian campurkan 1 - 2 sendok sirup lemon kedalam 200 ml air.</p>
             <h4>Rp.12.500 / 200ml </h4>
+
+            <a href="https://wa.me/628978046090?text=Halo%20EYP%20Fresh%20Mart,%20saya%20ingin%20memesan%20Sirup%20Lemon%20California."
+class="btn-beli"
+target="_blank">
+<i class="fab fa-whatsapp"></i> Beli Sekarang
+</a>
         </div>
 
 
@@ -1274,6 +1988,12 @@ class="hero-img">
             <h3> Minuman Lemon Ready To Drink </h3>
             <p>Minuman Lemon dari perasan lemon dan campuran sedikit madu untuk perasa manis. Bisa langsung diminum. </p>
             <h4>Rp.12.500 / 200ml </h4>
+
+            <a href="https://wa.me/628978046090?text=Halo%20EYP%20Fresh%20Mart,%20saya%20ingin%20memesann%20MinumanL%20Lemon%20Madu%20California."
+class="btn-beli"
+target="_blank">
+<i class="fab fa-whatsapp"></i> Beli Sekarang
+</a>
         </div>
 
     </div>
@@ -1283,14 +2003,19 @@ class="hero-img">
 </section>
 
 
+
+
+
 <section class="section" id="promo">
     <div class="container">
 <h2>Promo</h2>
 <div class="card">
-<h3>Diskon 15%</h3>
+<h3> COMING SOON </h3>
 <p>Berlaku untuk pembelian minimal 50 kg. </p>
 </div>
 </section>
+
+
 
 <section class="section partnership" id="partnership">
 <div class="container">
@@ -1347,20 +2072,150 @@ Dipercaya dan bekerja sama dengan berbagai perusahaan serta marketplace.
 <div class="partner-card">
 <img src="images/mocin.png" alt="GoFood">
 </div>
+</section>
 
-</div>
-</div>
+<section class="section reseller" id="reseller">
+
+    <div class="container">
+
+        <h2>🤝 Join Reseller EYP Fresh Mart</h2>
+
+        <p class="subtitle">
+            Ingin mendapatkan harga khusus reseller dan keuntungan lebih besar?
+            Bergabunglah menjadi mitra resmi EYP Fresh Mart sekarang juga.
+        </p>
+
+        <div class="reseller-box">
+
+            <div class="reseller-left">
+
+                <h3>Kenapa Harus Bergabung?</h3>
+
+                <div class="benefit">
+                    <i class="fas fa-tags"></i>
+                    <span>Harga khusus reseller</span>
+                </div>
+
+                <div class="benefit">
+                    <i class="fas fa-box-open"></i>
+                    <span>Stok selalu tersedia</span>
+                </div>
+
+                <div class="benefit">
+                    <i class="fas fa-shipping-fast"></i>
+                    <span>Pengiriman ke seluruh Indonesia</span>
+                </div>
+
+                <div class="benefit">
+                    <i class="fas fa-handshake"></i>
+                    <span>Support penjualan & konsultasi</span>
+                </div>
+
+                <div class="benefit">
+                    <i class="fas fa-coins"></i>
+                    <span>Potensi keuntungan menarik</span>
+                </div>
+
+                <a href="https://wa.me/628978046090?text=Halo%20EYP%20Fresh%20Mart,%20saya%20ingin%20bergabung%20menjadi%20reseller."
+                   class="btn"
+                   target="_blank">
+                    Gabung Sekarang
+                </a>
+
+            </div>
+
+            <div class="reseller-right">
+
+                <img src="images/reseller.png" alt="Join Reseller">
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
-<section class="section">
+</section>
 
-<h2>Testimoni</h2>
-<div class="grid">
-<div class="card">⭐⭐⭐⭐⭐<br>Lemonnya segar!</div>
-<div class="card">⭐⭐⭐⭐⭐<br>Pengiriman cepat.</div>
-<div class="card">⭐⭐⭐⭐⭐<br>Kualitas premium.</div>
-</div>
+<section class="section testimoni">
+
+    <div class="container">
+
+        <h2>Testimoni Pelanggan</h2>
+
+        <p class="subtitle">
+            Kepuasan pelanggan adalah prioritas kami ❤️
+        </p>
+
+        <div class="grid">
+
+            <div class="card testimonial-card">
+
+                <div class="testimonial-header">
+                    <div>
+                        <h3>deniasihh</h3>
+                        <span>Pelanggan Shopee</span>
+                    </div>
+                </div>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐
+                </div>
+
+                <p>
+                    <strong>Kesegaran:</strong> buah fresh terus alhamdulillah sukaaaaa ❤❤❤<br><br>
+
+                    <strong>Rasa:</strong> seger<br>
+                    <strong>Kesan:</strong> asam segar.<br><br>
+
+                    Biasanya besar-besar banget, ini minta yang kecil dan alhamdulillah sesuai permintaan. Sudah langganan banget di toko ini. Makasih, sukaaaaa ❤❤❤
+                </p>
+
+            </div>
+
+            <div class="card testimonial-card">
+
+                <div class="testimonial-header">
+                    <div>
+                        <h3>Kuro</h3>
+                        <span>Pelanggan Tokopedia</span>
+                    </div>
+                </div>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐
+                </div>
+
+                <p>
+                    Barang tiba dengan aman, pengiriman aman, barang (buahnya) bagus semua, harga terjangkau, terima kasih seller sukses selalu
+                </p>
+
+            </div>
+
+            <div class="card testimonial-card">
+
+                <div class="testimonial-header">
+                    <div>
+                        <h3>Siti Rahma</h3>
+                        <span>Pelanggan Langganan</span>
+                    </div>
+                </div>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐
+                </div>
+
+                <p>
+                    Sudah berkali-kali beli di EYP Fresh Mart. Buahnya selalu fresh, ukuran sesuai, dan pelayanannya ramah. Recommended!
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </section>
 
 <section class="section gallery" id="galeri">
@@ -1368,19 +2223,10 @@ Dipercaya dan bekerja sama dengan berbagai perusahaan serta marketplace.
 <h2>Galeri</h2>
 
 <p class="gallery-subtitle">
-Dokumentasi kegiatan EYP Fresh Mart mulai dari proses panen,
-pengemasan hingga pengiriman kepada pelanggan.
+Dokumentasi acara yang dihadiri EYP Fresh Mart, produk, dan pengemasan.
 </p>
 
 <div class="gallery-grid">
-
-<div class="gallery-item">
-<img src="images/PIRT.png" alt="">
-</div>
-
-<div class="gallery-item">
-<img src="images/Halal.png" alt="">
-</div>
 
 <div class="gallery-item">
 <img src="images/galeri1.jpeg" alt="">
@@ -1403,39 +2249,129 @@ pengemasan hingga pengiriman kepada pelanggan.
 
 </section>
 
+
 <section class="section video-section">
 
-<h2>Video Dokumentasi</h2>
+    <h2>Video Dokumentasi</h2>
 
-<p>
-Lihat Video Dokumentasi EYP Fresh Mart yuuuk...
-</p>
+    <p>
+        Lihat Video Dokumentasi EYP Fresh Mart yuuuk...
+    </p>
 
-<div class="video-container">
+    <div class="video-slider">
 
-<video controls>
-<source src="video/infokrian.mp4" type="video/mp4">
-</video>
+        <button class="prev">&#10094;</button>
 
-</div>
+        <div class="video-wrapper">
 
-<div class="video-container">
+            <div class="video-slide active">
+                <video controls>
+                    <source src="video/infokrian.mp4" type="video/mp4">
+                </video>
+            </div>
 
-<video controls>
-<source src="video/kriankuliner.mp4" type="video/mp4">
-</video>
+            <div class="video-slide">
+                <video controls>
+                    <source src="video/kriankuliner.mp4" type="video/mp4">
+                </video>
+            </div>
 
-</div>
+            <div class="video-slide">
+                <video controls>
+                    <source src="video/BTV.mp4" type="video/mp4">
+                </video>
+            </div>
 
-</div>
+        </div>
 
-<div class="video-container">
+        <button class="next">&#10095;</button>
 
-<video controls>
-<source src="video/BTV.mp4" type="video/mp4">
-</video>
+    </div>
 
-</div>
+</section>
+
+
+
+
+<section class="section lokasi" id="lokasi">
+
+    <div class="container">
+
+        <h2>Lokasi Kami</h2>
+
+        <p class="subtitle">
+            Kunjungi kami di salah satu lokasi berikut untuk pembelian langsung maupun pengambilan pesanan.
+        </p>
+
+        <div class="lokasi-grid">
+
+            <!-- Gudang -->
+            <div class="lokasi-card">
+
+                <h3>
+                    <i class="fas fa-warehouse"></i>
+                    Gudang EYP Fresh Mart
+                </h3>
+
+                <p>
+                    <i class="fas fa-map-marker-alt"></i>
+                    Sonosari, Seketi,RT 004, RW 009, (lewat jalur belakang), Kec. BalongBendo, Kabupaten Sidoarjo, Jawa Timur 61262
+                </p>
+
+                <p>
+                    <i class="fas fa-phone"></i>
+                    0897-8046-090
+                </p>
+
+                <p>
+                    <i class="far fa-clock"></i>
+                    Senin - Minggu<br>
+                    Sesuai Janji
+                </p>
+
+                <a href="https://share.google/AuoWTkjguFy49fltX" target="_blank" class="btn">
+                    <i class="fas fa-location-arrow"></i>
+                    Lihat di Google Maps
+                </a>
+
+            </div>
+
+            <!-- Pasar Baru Krian -->
+            <div class="lokasi-card">
+
+                <h3>
+                    <i class="fas fa-store"></i>
+                    Pasar Baru Krian
+                </h3>
+
+                <p>
+                    <i class="fas fa-map-marker-alt"></i>
+                    Jl. DR. Setiabudi No.47, Krian, Kec. Krian, Kabupaten Sidoarjo, Jawa Timur 61262
+                </p>
+
+                <p>
+                    <i class="fas fa-phone"></i>
+                    0897-8046-090
+                </p>
+
+                <p>
+                    <i class="far fa-clock"></i>
+                    Senin - Minggu<br>
+                    08.30 - 15.00 WIB
+                </p>
+
+                <a href="https://maps.app.goo.gl/qLc1aEcTensDS6iE9" target="_blank" class="btn">
+                    <i class="fas fa-location-arrow"></i>
+                    Lihat di Google Maps
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
 
 <!-- Floating Customer Service -->
@@ -1562,6 +2498,55 @@ document.getElementById("csImage").src = csImages[index];
 
 },3000);
 
+
+
 </script>
+
+
+<script>
+
+const slides = document.querySelectorAll(".video-slide");
+const next = document.querySelector(".next");
+const prev = document.querySelector(".prev");
+
+let current = 0;
+
+function showSlide(index){
+
+    slides.forEach(slide=>{
+        slide.classList.remove("active");
+    });
+
+    slides[index].classList.add("active");
+
+}
+
+next.onclick = ()=>{
+
+    current++;
+
+    if(current >= slides.length){
+        current = 0;
+    }
+
+    showSlide(current);
+
+}
+
+prev.onclick = ()=>{
+
+    current--;
+
+    if(current < 0){
+        current = slides.length-1;
+    }
+
+    showSlide(current);
+
+}
+
+</script>
+
+
 </body>
 </html>
