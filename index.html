@@ -8,6 +8,84 @@
 
 <style>
 
+/* =========================
+   POPUP INFORMASI PESANAN
+========================= */
+
+.order-popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 99999;
+}
+
+.order-popup {
+    width: 100%;
+    max-width: 430px;
+    background: #fff;
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+
+    animation: popupShow 0.3s ease;
+}
+
+.order-popup-icon {
+    font-size: 38px;
+    margin-bottom: 12px;
+}
+
+.order-popup h3 {
+    margin: 0 0 15px;
+    font-size: 22px;
+    color: #333;
+}
+
+.order-popup p {
+    margin: 0 0 12px;
+    color: #666;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.order-popup strong {
+    color: #e39b00;
+}
+
+.order-popup-btn {
+    margin-top: 15px;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    background: #2e7d32;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.order-popup-btn:hover {
+    background: #256628;
+}
+
+@keyframes popupShow {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 /* ===========================
    NAVBAR
 =========================== */
@@ -1691,6 +1769,39 @@ width:260px;
 </head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 <body>
+<!-- POPUP INFORMASI PESANAN -->
+<div class="order-popup-overlay" id="orderPopup">
+
+    <div class="order-popup">
+
+        <div class="order-popup-icon">
+            ⚠️
+        </div>
+
+        <h3>Informasi Pesanan</h3>
+
+        <p>
+            Mohon diperhatikan, ketersediaan stok buah kami
+            <strong> terbatas dikarenakan cuaca kemarau bulan ini hingga waktu yang tidak dapat ditentukan. </strong>.
+        </p>
+
+        <p>
+            Hal ini dapat menyebabkan proses pemenuhan pesanan
+            mengalami keterlambatan dari waktu biasanya.
+        </p>
+
+        <p>
+            Mohon maaf atas ketidaknyamananya, Kami akan melakukan konfirmasi ketersediaan stok
+            terlebih dahulu sebelum pesanan diproses.
+        </p>
+
+        <button class="order-popup-btn" onclick="closeOrderPopup()">
+            Saya Mengerti
+        </button>
+
+    </div>
+
+</div>
 
 <header>
 
@@ -2547,6 +2658,32 @@ prev.onclick = ()=>{
 
 </script>
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const stockModal = document.getElementById("stockModal");
+
+    // Tampilkan modal ketika website pertama kali dibuka
+    setTimeout(function () {
+        stockModal.classList.add("show");
+    }, 500);
+
+});
+
+function closeStockModal() {
+
+    const stockModal = document.getElementById("stockModal");
+
+    stockModal.classList.remove("show");
+
+}
+</script>
+
+<script>
+function closeOrderPopup() {
+    document.getElementById("orderPopup").style.display = "none";
+}
+</script>
 
 </body>
 </html>
